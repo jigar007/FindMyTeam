@@ -11,11 +11,11 @@ class Game: NSObject {
     
     var uid: String?
     var date: Date?
-    var latitude: NSNumber?
-    var longitude: NSNumber?
+    var latitude: Double?
+    var longitude: Double?
     var organizerUid: String?
-    var playersNeeded: NSNumber?
+    var playersNeeded: Int?
     var sport: String?
     var confirmedPlayers: [String]?
-    var price: NSNumber?
+    var price: Double?
 }

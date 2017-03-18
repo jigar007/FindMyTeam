@@ -14,7 +14,7 @@
         <!--Scheduled Matches-->
         <scene sceneID="FPW-A7-gLN">
             <objects>
-                <viewController id="xfD-dI-eUZ" userLabel="Scheduled Matches" sceneMemberID="viewController">
+                <viewController id="xfD-dI-eUZ" userLabel="Scheduled Matches" customClass="ScheduledMatchesViewController" customModule="Codebrew2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PpO-4u-4L9"/>
                         <viewControllerLayoutGuide type="bottom" id="Hcn-hd-aEa"/>
@@ -27,11 +27,11 @@
                                 <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomCell" rowHeight="75" id="Nb5-IV-p59">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomCell" rowHeight="75" id="Nb5-IV-p59" customClass="ScheduledTableViewCell" customModule="Codebrew2017" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nb5-IV-p59" id="c4h-hi-ueq">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfC-Fv-Wts" userLabel="Price Label">
@@ -82,11 +82,15 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="OfC-Fv-Wts" secondAttribute="trailing" constant="8" id="zuo-cD-qFY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <connections>
-                                            <outlet property="mainLabel" destination="sNo-Jp-16m" id="tix-kG-Dp8"/>
-                                            <outlet property="secondLabel" destination="nfw-bk-OVF" id="loa-zR-tud"/>
-                                            <outlet property="thirdLabel" destination="Hji-DA-INN" id="2cf-my-stg"/>
-                                            <outlet property="thumbnailView" destination="TNh-xM-Xr6" id="rJM-fM-pvH"/>
+                                            <outlet property="mainLabel" destination="sNo-Jp-16m" id="aVf-y8-E2o"/>
+                                            <outlet property="priceLabel" destination="OfC-Fv-Wts" id="fy9-4L-a0u"/>
+                                            <outlet property="secondLabel" destination="nfw-bk-OVF" id="ezI-b0-bX5"/>
+                                            <outlet property="thirdLabel" destination="Hji-DA-INN" id="3cj-vr-kT5"/>
+                                            <outlet property="thumbnailView" destination="TNh-xM-Xr6" id="FHB-w7-D2c"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -108,6 +112,9 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Scheduled Matches" id="NOy-Dm-D4E" userLabel="Scheduled Matches"/>
+                    <connections>
+                        <outlet property="scheduledMatchesTableView" destination="zKs-lV-VVy" id="W3c-Nn-Zxg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTC-PZ-OlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,11 +136,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductCustomCell" rowHeight="75" id="PXl-q6-6fI" userLabel="MatchCustomCell" customClass="MatchTableViewCell" customModule="Codebrew2017" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MatchCustomCell" rowHeight="75" id="PXl-q6-6fI" customClass="MatchTableViewCell" customModule="Codebrew2017" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PXl-q6-6fI" id="nES-t7-CK2">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="elf-GW-ODQ" userLabel="Organizer Image View">
@@ -156,13 +163,13 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l78-a1-HPj" userLabel="Sport type label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l78-a1-HPj" userLabel="Time Label">
                                                     <rect key="frame" x="75" y="31" width="259" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2u-t1-mXn" userLabel="Time label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2u-t1-mXn" userLabel="Sport type Label">
                                                     <rect key="frame" x="75" y="8" width="259" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -199,7 +206,16 @@
                                                 <constraint firstItem="rXT-r5-fec" firstAttribute="bottom" secondItem="elf-GW-ODQ" secondAttribute="bottom" id="z6k-Z5-25g"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <accessibility key="accessibilityConfiguration" identifier="MatchTableViewCell"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="MatchCustomCell">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <connections>
+                                            <outlet property="locationLabel" destination="rXT-r5-fec" id="hhU-0v-0rb"/>
+                                            <outlet property="organizerImageView" destination="elf-GW-ODQ" id="A2F-Gn-UeB"/>
+                                            <outlet property="priceLabel" destination="29N-St-PTo" id="1SJ-hm-qgw"/>
+                                            <outlet property="sportTypeLable" destination="b2u-t1-mXn" id="P08-qQ-IN5"/>
+                                            <outlet property="timeLabel" destination="l78-a1-HPj" id="gf2-0n-Bfv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -231,6 +247,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <connections>
                         <outlet property="availableMatchesTableView" destination="JsV-SP-iEp" id="3WA-RO-lbW"/>
+                        <segue destination="7MU-b4-HXm" kind="presentation" identifier="GoToMap" modalPresentationStyle="currentContext" modalTransitionStyle="flipHorizontal" id="mgD-Bb-vsw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3D-JG-tcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -273,7 +290,6 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2iI-Be-boA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="-604" y="334"/>
         </scene>
         <!--Item-->
@@ -452,7 +468,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Match  Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nk5-yF-uQB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Match  Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nk5-yF-uQB">
                                 <rect key="frame" x="138" y="53" width="101" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="101" id="TRd-DW-H9J"/>
@@ -491,7 +507,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pe5-KX-Naf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pe5-KX-Naf">
                                 <rect key="frame" x="205" y="178" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -509,7 +525,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YV1-ap-IHE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YV1-ap-IHE">
                                 <rect key="frame" x="36" y="263" width="71" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -539,13 +555,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLX-m9-Du6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLX-m9-Du6">
                                 <rect key="frame" x="290" y="311" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7j-ph-rs8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7j-ph-rs8">
                                 <rect key="frame" x="29" y="304" width="75" height="75"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kro-pg-bwZ">
@@ -584,6 +600,7 @@
                             <constraint firstItem="YV1-ap-IHE" firstAttribute="leading" secondItem="NrN-1V-LeP" secondAttribute="leadingMargin" constant="20" id="MtE-yH-ziR"/>
                             <constraint firstItem="kro-pg-bwZ" firstAttribute="leading" secondItem="NrN-1V-LeP" secondAttribute="leadingMargin" constant="13" id="Rwc-OI-vnk"/>
                             <constraint firstItem="nk5-yF-uQB" firstAttribute="top" secondItem="3ma-gT-xVt" secondAttribute="bottom" constant="29" id="Wya-Du-mas"/>
+                            <constraint firstItem="pe5-KX-Naf" firstAttribute="baseline" secondItem="qZq-fq-sPu" secondAttribute="baseline" id="XVm-IE-LuF"/>
                             <constraint firstItem="RvR-kI-T7L" firstAttribute="leading" secondItem="w7j-ph-rs8" secondAttribute="trailing" constant="17" id="Ymo-p7-aT6"/>
                             <constraint firstItem="qNS-Vo-QQy" firstAttribute="leading" secondItem="kvL-Fs-93E" secondAttribute="trailing" constant="29" id="c0E-4O-UmN"/>
                             <constraint firstItem="tRr-fc-BA7" firstAttribute="leading" secondItem="HvU-VU-N8i" secondAttribute="trailing" constant="40" id="ePm-3S-mM6"/>
@@ -603,7 +620,10 @@
                             <constraint firstItem="w7j-ph-rs8" firstAttribute="leading" secondItem="NrN-1V-LeP" secondAttribute="leadingMargin" constant="13" id="s4q-Mu-c7K"/>
                             <constraint firstItem="MLX-m9-Du6" firstAttribute="leading" secondItem="RvR-kI-T7L" secondAttribute="trailing" constant="27" id="tIg-lS-Asy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MLX-m9-Du6" secondAttribute="trailing" constant="27" id="tdr-36-U7P"/>
+                            <constraint firstItem="YV1-ap-IHE" firstAttribute="baseline" secondItem="geH-2p-H4P" secondAttribute="baseline" id="ue0-BX-4fN"/>
                             <constraint firstItem="FD6-w1-lAR" firstAttribute="top" secondItem="qNS-Vo-QQy" secondAttribute="bottom" constant="35" id="vuT-MK-O64"/>
+                            <constraint firstItem="nk5-yF-uQB" firstAttribute="leading" secondItem="NrN-1V-LeP" secondAttribute="leading" constant="138" id="wzO-9E-6mR"/>
+                            <constraint firstItem="MLX-m9-Du6" firstAttribute="baseline" secondItem="RvR-kI-T7L" secondAttribute="baseline" id="xzj-e3-BPz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HIR-lT-TiQ"/>
@@ -621,7 +641,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MWQ-Ch-k6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="748"/>
+            <point key="canvasLocation" x="2964" y="727"/>
         </scene>
         <!--Item-->
         <scene sceneID="U3k-Tg-egJ">
@@ -642,8 +662,66 @@
             </objects>
             <point key="canvasLocation" x="825" y="-705"/>
         </scene>
+        <!--Games around you-->
+        <scene sceneID="vvn-qy-Cp3">
+            <objects>
+                <viewController id="oGD-fQ-z8q" customClass="MapViewController" customModule="Codebrew2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wge-nx-qZO"/>
+                        <viewControllerLayoutGuide type="bottom" id="ksL-8G-fcQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w30-MY-zXw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2XD-WR-NTI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2XD-WR-NTI" firstAttribute="top" secondItem="w30-MY-zXw" secondAttribute="top" id="7EY-I1-8OC"/>
+                            <constraint firstItem="2XD-WR-NTI" firstAttribute="bottom" secondItem="ksL-8G-fcQ" secondAttribute="top" id="Rsm-78-Qmm"/>
+                            <constraint firstItem="2XD-WR-NTI" firstAttribute="leading" secondItem="w30-MY-zXw" secondAttribute="leading" id="eiD-92-jxx"/>
+                            <constraint firstAttribute="trailing" secondItem="2XD-WR-NTI" secondAttribute="trailing" id="nEO-mj-pVd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Games around you" id="jlo-Tm-hLU" userLabel="Games around you">
+                        <barButtonItem key="rightBarButtonItem" image="list_icon" id="f9h-Iz-2h8">
+                            <connections>
+                                <action selector="backToList:" destination="oGD-fQ-z8q" id="wdI-3S-J0i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="map" destination="2XD-WR-NTI" id="ZuA-0s-hF5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrt-p6-nER" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4260" y="36"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jWJ-1w-Fri">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7MU-b4-HXm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0L3-1h-XTk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oGD-fQ-z8q" kind="relationship" relationship="rootViewController" id="tUD-4E-pok"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DlB-bX-8g1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3317.5999999999999" y="35.532233883058474"/>
+        </scene>
     </scenes>
     <resources>
         <image name="compass_icon" width="16" height="16"/>
+        <image name="list_icon" width="16" height="16"/>
     </resources>
 </document>
