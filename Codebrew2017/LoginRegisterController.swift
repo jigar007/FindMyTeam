@@ -11,7 +11,9 @@ import Firebase
 import Photos
 
 @IBDesignable
-class LoginRegisterController: UIViewController {
+class LoginRegisterController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var selectedImageFromPicker: UIImage?
     
     let spinnerView: UIActivityIndicatorView = {
         let sv = UIActivityIndicatorView()
@@ -21,10 +23,12 @@ class LoginRegisterController: UIViewController {
         return sv
     }()
     
-    let profileImageView: UIImageView = {
+    lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "World-Puzzle-Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleUploadTap)))
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -125,6 +129,55 @@ class LoginRegisterController: UIViewController {
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
+    
+    func handleUploadTap() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true,completion:nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        selectedImageFromPicker = info["UIImagePickerControllerOriginalImage"] as? UIImage
+        if let selectedImage = selectedImageFromPicker {
+            profileImageView.image = selectedImage
+            uploadToFirebaseStorageUsingImage(image: selectedImage)
+            
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func uploadToFirebaseStorageUsingImage(image: UIImage){
+        let imageName = NSUUID().uuidString
+        let ref = FIRStorage.storage().reference().child("profile_image").child(imageName)
+        
+        if let uploadData = UIImageJPEGRepresentation(image, 0.01){
+            ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    print("Failed to upload image :", error)
+                    return
+                }
+                if let imageUrl = metadata?.downloadURL()?.absoluteString{
+                    self.sendMessageWithImageUrl(imageUrl: imageUrl)
+                }
+            })
+        }
+    }
+    
+    private func sendMessageWithImageUrl(imageUrl: String){
+        
+        let ref = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!)
+        let values = ["image": imageUrl]
+        
+        ref.updateChildValues(values) { (error, ref) in
+            if error != nil{
+                print(error)
+                return
+            }
+        }
+        
+    }
     
     func handleLoginOrRegister() {
         spinnerView.startAnimating()
