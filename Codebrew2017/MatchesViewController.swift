@@ -16,7 +16,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
     var refreshControl: UIRefreshControl!
     var games = [Game]()
     var firebaseReference: FIRDatabaseReference!
-    //let userID = FIRAuth.auth()?.currentUser?.uid
+    let userID = FIRAuth.auth()?.currentUser?.uid
     
 //    @IBAction func showInMap(_ sender: AnyObject) {
 //        performSegue(withIdentifier: "GoToMap", sender: nil)
@@ -40,18 +40,65 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
     }
     
     func refreshData() {
+        self.games = [Game]()
         //get data from firebase
         firebaseReference.child("game").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get all the games
-            let value = snapshot.value as? NSDictionary
+            print(snapshot)
+            let value = snapshot.value as? [String:AnyObject]//NSDictionary
+
+           print(value)
             
-            print (value!)
+            for (key, val) in value! {
+                print (key)
+                print (val)
+                let newGame = Game()
+                newGame.uid = key as? String
+                
+                let dict : NSDictionary = val as! NSDictionary
+                
+                newGame.organizerUid = dict.value(forKey: "organizer") as! String?
+                newGame.sport = dict.value(forKey: "sport") as! String?
+                newGame.price = dict.value(forKey: "price") as! NSNumber?
+                newGame.playersNeeded = dict.value(forKey: "playersNeeded") as! NSNumber?
+                newGame.date = Date() //TODO fix with real date
+                
+                let location = dict.value(forKey: "location") as! NSDictionary
+                
+                newGame.latitude = location.value(forKey: "latitude") as! NSNumber?
+                newGame.longitude = location.value(forKey: "longitude") as! NSNumber?
+                
+                let confirmedPlayer = dict.value(forKey: "confirmedPlayer") as? NSDictionary
+                
+                if confirmedPlayer != nil {
+                    for (_, value) in confirmedPlayer! {
+                        newGame.confirmedPlayers?.append(value as! String)
+                    }
+                }
+//                
+                if (self.userID != newGame.organizerUid) {
+                    if !(newGame.confirmedPlayers?.contains(self.userID!))! {
+                        self.games.append(newGame)
+                    }
+                }
+//                
+//                for (key2,val2) in (val as? NSDictionary)! {
+//                    
+//                    print (key2)
+//                    print (val2)
+//                }
+            }
+            
 //            if value != nil {
-//                for organizedGame in value! {
-//                    print
+//                for (key, val) in value! {
+//                    print(val["confirmedPlayer"])
+//                    
+////                    var newGame : Game
+////                    newGame.uid =
+//                    print("-----------")
 //                }
 //            }
-//            
+//
 //            let username = value?["username"] as? String ?? ""
             
             //let user = User.init(username: username)
@@ -59,6 +106,8 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
         }) { (error) in
             print(error.localizedDescription)
         }
+        
+        self.availableMatchesTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
