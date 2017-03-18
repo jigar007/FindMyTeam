@@ -112,7 +112,9 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
                         newGame.confirmedPlayers?.append(value as! String)
                     }
                 }
-//                
+                
+
+                
                 //if ((self.userID) != nil) {
                 //if (self.userID != newGame.organizerUid) {
                    // if !(newGame.confirmedPlayers?.contains(self.userID!))! {

@@ -16,4 +16,5 @@ class Player: NSObject {
     var sports = [String]()
     var numberOfMatch: Int?
     var rating: Float?
+    var phone: Int?
 }
