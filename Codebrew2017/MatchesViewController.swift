@@ -45,7 +45,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
             // Get all the games
             let value = snapshot.value as? NSDictionary
             
-            print (value!)
+            //print (value!)
 //            if value != nil {
 //                for organizedGame in value! {
 //                    print
