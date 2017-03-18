@@ -66,7 +66,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
         availableMatchesTableView.addSubview(self.refreshControl)
         
         //load data
-        refreshData()
+        //refreshData()
     }
     
     func refreshData() {

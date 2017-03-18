@@ -141,7 +141,7 @@ class LoginRegisterController: UIViewController, UIImagePickerControllerDelegate
         selectedImageFromPicker = info["UIImagePickerControllerOriginalImage"] as? UIImage
         if let selectedImage = selectedImageFromPicker {
             profileImageView.image = selectedImage
-            uploadToFirebaseStorageUsingImage(image: selectedImage)
+            
             
         }
         
@@ -282,6 +282,7 @@ class LoginRegisterController: UIViewController, UIImagePickerControllerDelegate
                         print(error!)
                         return
                     } else {
+                        self.uploadToFirebaseStorageUsingImage(image: self.profileImageView.image!)
                         self.navigationController?.pushViewController(SelectSportController(), animated: true)
                     }
                 })
