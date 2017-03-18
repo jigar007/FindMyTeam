@@ -22,6 +22,36 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
 //        performSegue(withIdentifier: "GoToMap", sender: nil)
 //    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        checkIfUserIsLoggedIn()
+    }
+    @IBAction func logout(_ sender: UIBarButtonItem) {
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch let error{
+            print(error)
+        }
+        let navigationController = UINavigationController(rootViewController: LoginRegisterController())
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    /**
+     Method to check whether user is logged in.
+     */
+    func checkIfUserIsLoggedIn() {
+        
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            // User is logged in
+            // Do nothing currently
+        } else {
+            // User is not logged in
+            let navigationController = UINavigationController(rootViewController: LoginRegisterController())
+            present(navigationController, animated: true, completion: nil)
+            //            let loginRegisterController = LoginRegisterController()
+            //            present(loginRegisterController, animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,6 +119,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
 //                }
             }
             
+
 //            if value != nil {
 //                for (key, val) in value! {
 //                    print(val["confirmedPlayer"])
