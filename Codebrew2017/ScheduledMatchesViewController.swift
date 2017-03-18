@@ -1,8 +1,8 @@
 //
-//  MatchesViewController.swift
+//  ScheduledMatchesViewController.swift
 //  Codebrew2017
 //
-//  Created by Federico Malesani on 18/3/17.
+//  Created by Federico Malesani on 19/3/17.
 //  Copyright © 2017 University of Melbourne. All rights reserved.
 //
 
@@ -11,48 +11,14 @@ import Firebase
 import CoreLocation
 import Contacts
 
-class MatchesViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource, UIScrollViewDelegate {
+class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource, UIScrollViewDelegate {
     
-    @IBOutlet weak var availableMatchesTableView: UITableView!
+    @IBOutlet weak var scheduledMatchesTableView: UITableView!
     
     var refreshControl: UIRefreshControl!
     var games = [Game]()
     var firebaseReference: FIRDatabaseReference!
     let userID = FIRAuth.auth()?.currentUser?.uid
-    
-    @IBAction func showInMap(_ sender: AnyObject) {
-        performSegue(withIdentifier: "GoToMap", sender: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        checkIfUserIsLoggedIn()
-    }
-    @IBAction func logout(_ sender: UIBarButtonItem) {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch let error{
-            print(error)
-        }
-        let navigationController = UINavigationController(rootViewController: LoginRegisterController())
-        present(navigationController, animated: true, completion: nil)
-    }
-    
-    /**
-     Method to check whether user is logged in.
-     */
-    func checkIfUserIsLoggedIn() {
-        
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            // User is logged in
-            // Do nothing currently
-        } else {
-            // User is not logged in
-            let navigationController = UINavigationController(rootViewController: LoginRegisterController())
-            present(navigationController, animated: true, completion: nil)
-            //            let loginRegisterController = LoginRegisterController()
-            //            present(loginRegisterController, animated: true, completion: nil)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,10 +31,10 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
         refreshControl?.backgroundColor = UIColor.white
         refreshControl?.tintColor = UIColor.gray
         refreshControl?.addTarget(self, action: #selector(MatchesViewController.refreshData), for: UIControlEvents.valueChanged)
-        availableMatchesTableView.addSubview(self.refreshControl)
+        scheduledMatchesTableView.addSubview(self.refreshControl)
         
         //load data
-        //refreshData()
+        refreshData()
     }
     
     func refreshData() {
@@ -112,43 +78,43 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
                         newGame.confirmedPlayers?.append(value as! String)
                     }
                 }
-//                
+                //
                 //if ((self.userID) != nil) {
                 //if (self.userID != newGame.organizerUid) {
-                   // if !(newGame.confirmedPlayers?.contains(self.userID!))! {
-                        self.games.append(newGame)
-                    //}
+                // if !(newGame.confirmedPlayers?.contains(self.userID!))! {
+                self.games.append(newGame)
+                //}
                 //}
                 //}
                 
                 print("GAMES:")
                 print(self.games.count)
-//
-//                for (key2,val2) in (val as? NSDictionary)! {
-//                    
-//                    print (key2)
-//                    print (val2)
-//                }
+                //
+                //                for (key2,val2) in (val as? NSDictionary)! {
+                //
+                //                    print (key2)
+                //                    print (val2)
+                //                }
             }
             
-
-//            if value != nil {
-//                for (key, val) in value! {
-//                    print(val["confirmedPlayer"])
-//                    
-////                    var newGame : Game
-////                    newGame.uid =
-//                    print("-----------")
-//                }
-//            }
-//
-//            let username = value?["username"] as? String ?? ""
+            
+            //            if value != nil {
+            //                for (key, val) in value! {
+            //                    print(val["confirmedPlayer"])
+            //
+            ////                    var newGame : Game
+            ////                    newGame.uid =
+            //                    print("-----------")
+            //                }
+            //            }
+            //
+            //            let username = value?["username"] as? String ?? ""
             
             //let user = User.init(username: username)
             // ...
             
             OperationQueue.main.addOperation({() -> Void in
-                self.availableMatchesTableView.reloadData()
+                self.scheduledMatchesTableView.reloadData()
             })
         }) { (error) in
             print(error.localizedDescription)
@@ -164,12 +130,19 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
     
     //MARK: - TableView DataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //using custom cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MatchCustomCell", for: indexPath) as! MatchTableViewCell
-        let game = games[(indexPath as NSIndexPath).row]
 
+        //using custom cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ScheduledTableViewCell
+        let game = games[(indexPath as NSIndexPath).row]
         
+        //cell configuration
+        cell.priceLabel.text = String(format:"%.1f $", game.price!)
+        
+        let dateFormatterForCell = DateFormatter()
+        dateFormatterForCell.dateFormat = "HH a"
+        
+        cell.mainLabel.text = game.sport
+
         let location = CLLocation(latitude: game.latitude!, longitude: game.longitude!)
         
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
@@ -177,28 +150,71 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
             if error != nil {
                 print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
             } else {
-            
-            if (placemarks?.count)! > 0 {
-                let pm = placemarks![0] 
-                cell.locationLabel.text =
-                    CNPostalAddressFormatter.string(from: self.postalAddressFromAddressDictionary(pm.addressDictionary as! Dictionary<NSObject, AnyObject>), style: .mailingAddress)
-            }
-            else {
-                print("Problem with the data received from geocoder")
-            }
+                
+                if (placemarks?.count)! > 0 {
+                    let pm = placemarks![0]
+                    cell.thirdLabel.text =
+                        CNPostalAddressFormatter.string(from: self.postalAddressFromAddressDictionary(pm.addressDictionary as! Dictionary<NSObject, AnyObject>), style: .mailingAddress)
+                }
+                else {
+                    print("Problem with the data received from geocoder")
+                }
                 
             }
         })
         
-        cell.organizerImageView = nil
-        cell.sportTypeLable.text = game.sport
-        
         let date = game.date
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
-        cell.timeLabel.text = formatter.string(from: date!)
+        cell.secondLabel.text = formatter.string(from: date!)
         
-        cell.priceLabel.text = String(format:"%.1f $", game.price!)
+        dateFormatterForCell.dateFormat = "MM"
+        var monthStringForCalendar:String?
+        let monthNumber = Int(dateFormatterForCell.string(from: game.date! as Date))
+        
+        if (monthNumber != nil) {
+            switch monthNumber! {
+            case 01:
+                monthStringForCalendar = "JAN"
+            case 02:
+                monthStringForCalendar = "FEB"
+            case 03:
+                monthStringForCalendar = "MAR"
+            case 04:
+                monthStringForCalendar = "APR"
+            case 05:
+                monthStringForCalendar = "MAY"
+            case 06:
+                monthStringForCalendar = "JUN"
+            case 07:
+                monthStringForCalendar = "JUL"
+            case 08:
+                monthStringForCalendar = "AUG"
+            case 09:
+                monthStringForCalendar = "SEP"
+            case 10:
+                monthStringForCalendar = "OCT"
+            case 11:
+                monthStringForCalendar = "NOV"
+            case 12:
+                monthStringForCalendar = "DEC"
+            default:
+                monthStringForCalendar = "ERR"
+            }
+        } else {
+            monthStringForCalendar = "NIL"
+        }
+        
+        cell.thumbnailView.month = monthStringForCalendar! as NSString
+        
+        dateFormatterForCell.dateFormat = "dd"
+        cell.thumbnailView.day = dateFormatterForCell.string(from: game.date! as Date) as NSString
+        
+        cell.thumbnailView.layer.cornerRadius = cell.thumbnailView.layer.bounds.size.width/2
+        cell.thumbnailView.layer.borderColor = UIColor.black.cgColor
+        cell.thumbnailView.layer.borderWidth = 1
+        cell.thumbnailView.clipsToBounds = true
+        cell.thumbnailView.transform = CGAffineTransform(rotationAngle: CGFloat(-0.3))
         
         return cell
     }
@@ -231,33 +247,16 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        //join a match
-        let joinAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Join!", handler: { (action, indexPath) -> Void in
-            
-            //TODO: update firebase and reload data
-            
-        })
-        //getItAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        joinAction.backgroundColor = UIColor.green
-        //productsTableView.setEditing(false, animated: true)
-        return [joinAction]
-    }
-
-
-    //MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if (segue.identifier == "GoToMap") {
-            if let destinationNavigationController = segue.destination as? UINavigationController {
-                let targetController = destinationNavigationController.topViewController as! MapViewController
-                targetController.games = games
-            }
-        }
-    }
-
-
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     //MARK: - UIScrollView Delegate
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
