@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -14,10 +15,27 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkIfUserIsLoggedIn()
+    }
+    
+    /**
+     Method to check whether user is logged in.
+     */
+    func checkIfUserIsLoggedIn() {
+        
+//        if FIRAuth.auth()?.currentUser?.uid != nil {
+        if false {
+            // User is logged in
+            // Do nothing currently
+        } else {
+            // User is not logged in
+            let navigationController = UINavigationController(rootViewController: LoginRegisterController())
+            present(navigationController, animated: true, completion: nil)
+//            let loginRegisterController = LoginRegisterController()
+//            present(loginRegisterController, animated: true, completion: nil)
+        }
     }
 
 
