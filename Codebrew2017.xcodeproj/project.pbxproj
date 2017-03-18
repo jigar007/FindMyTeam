@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		057999011E7CED3700CEB0E9 /* CalendarThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057999001E7CED3700CEB0E9 /* CalendarThumbnailView.swift */; };
+		057999031E7CFB2200CEB0E9 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057999021E7CFB2200CEB0E9 /* MatchTableViewCell.swift */; };
+		057999051E7CFB7000CEB0E9 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057999041E7CFB7000CEB0E9 /* MatchesViewController.swift */; };
+		057999071E7D1E2100CEB0E9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057999061E7D1E2100CEB0E9 /* Game.swift */; };
 		0C0486B61E7CCE9500DA7123 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0486B51E7CCE9500DA7123 /* AppDelegate.swift */; };
 		0C0486B81E7CCE9500DA7123 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0486B71E7CCE9500DA7123 /* ViewController.swift */; };
 		0C0486BB1E7CCE9500DA7123 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C0486B91E7CCE9500DA7123 /* Main.storyboard */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		057999001E7CED3700CEB0E9 /* CalendarThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarThumbnailView.swift; sourceTree = "<group>"; };
+		057999021E7CFB2200CEB0E9 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
+		057999041E7CFB7000CEB0E9 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
+		057999061E7D1E2100CEB0E9 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		0C0486B21E7CCE9500DA7123 /* Codebrew2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Codebrew2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C0486B51E7CCE9500DA7123 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C0486B71E7CCE9500DA7123 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +72,11 @@
 			isa = PBXGroup;
 			children = (
 				0C0486B51E7CCE9500DA7123 /* AppDelegate.swift */,
+				057999061E7D1E2100CEB0E9 /* Game.swift */,
 				0C0486B71E7CCE9500DA7123 /* ViewController.swift */,
+				057999001E7CED3700CEB0E9 /* CalendarThumbnailView.swift */,
+				057999041E7CFB7000CEB0E9 /* MatchesViewController.swift */,
+				057999021E7CFB2200CEB0E9 /* MatchTableViewCell.swift */,
 				0C0486B91E7CCE9500DA7123 /* Main.storyboard */,
 				0C0486BC1E7CCE9500DA7123 /* Assets.xcassets */,
 				0C0486BE1E7CCE9500DA7123 /* LaunchScreen.storyboard */,
@@ -217,7 +229,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C0486B81E7CCE9500DA7123 /* ViewController.swift in Sources */,
+				057999071E7D1E2100CEB0E9 /* Game.swift in Sources */,
 				0C0486B61E7CCE9500DA7123 /* AppDelegate.swift in Sources */,
+				057999051E7CFB7000CEB0E9 /* MatchesViewController.swift in Sources */,
+				057999011E7CED3700CEB0E9 /* CalendarThumbnailView.swift in Sources */,
+				057999031E7CFB2200CEB0E9 /* MatchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
