@@ -17,6 +17,10 @@
 		0C0486BD1E7CCE9500DA7123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C0486BC1E7CCE9500DA7123 /* Assets.xcassets */; };
 		0C0486C01E7CCE9500DA7123 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C0486BE1E7CCE9500DA7123 /* LaunchScreen.storyboard */; };
 		0CDA3AD81E7CD16E00B92F67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA3AD71E7CD16E00B92F67 /* GoogleService-Info.plist */; };
+		0CDA3ADA1E7CD3BB00B92F67 /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA3AD91E7CD3BB00B92F67 /* LoginRegisterController.swift */; };
+		0CDA3ADC1E7CE1A200B92F67 /* SelectSportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA3ADB1E7CE1A200B92F67 /* SelectSportController.swift */; };
+		0CDA3ADF1E7CE4E000B92F67 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA3ADE1E7CE4E000B92F67 /* Player.swift */; };
+		0CDA3AE31E7D0B1F00B92F67 /* MoreInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA3AE21E7D0B1F00B92F67 /* MoreInfoController.swift */; };
 		FA7C0B3DC6A9828022BA340C /* Pods_Codebrew2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70FC0DA5EDF0E5C4AC63F3AB /* Pods_Codebrew2017.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,10 @@
 		0C0486BF1E7CCE9500DA7123 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C0486C11E7CCE9500DA7123 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CDA3AD71E7CD16E00B92F67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0CDA3AD91E7CD3BB00B92F67 /* LoginRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterController.swift; sourceTree = "<group>"; };
+		0CDA3ADB1E7CE1A200B92F67 /* SelectSportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSportController.swift; sourceTree = "<group>"; };
+		0CDA3ADE1E7CE4E000B92F67 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		0CDA3AE21E7D0B1F00B92F67 /* MoreInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoController.swift; sourceTree = "<group>"; };
 		18DA2B24FFDC797AE4C0769B /* Pods-Codebrew2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Codebrew2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Codebrew2017/Pods-Codebrew2017.debug.xcconfig"; sourceTree = "<group>"; };
 		427DC8149DD1129A8BD00651 /* Pods-Codebrew2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Codebrew2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-Codebrew2017/Pods-Codebrew2017.release.xcconfig"; sourceTree = "<group>"; };
 		70FC0DA5EDF0E5C4AC63F3AB /* Pods_Codebrew2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Codebrew2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +79,8 @@
 		0C0486B41E7CCE9500DA7123 /* Codebrew2017 */ = {
 			isa = PBXGroup;
 			children = (
+				0CDA3ADD1E7CE49D00B92F67 /* Model */,
+				0CDA3AD91E7CD3BB00B92F67 /* LoginRegisterController.swift */,
 				0C0486B51E7CCE9500DA7123 /* AppDelegate.swift */,
 				057999061E7D1E2100CEB0E9 /* Game.swift */,
 				0C0486B71E7CCE9500DA7123 /* ViewController.swift */,
@@ -82,8 +92,18 @@
 				0C0486BE1E7CCE9500DA7123 /* LaunchScreen.storyboard */,
 				0C0486C11E7CCE9500DA7123 /* Info.plist */,
 				0CDA3AD71E7CD16E00B92F67 /* GoogleService-Info.plist */,
+				0CDA3ADB1E7CE1A200B92F67 /* SelectSportController.swift */,
+				0CDA3AE21E7D0B1F00B92F67 /* MoreInfoController.swift */,
 			);
 			path = Codebrew2017;
+			sourceTree = "<group>";
+		};
+		0CDA3ADD1E7CE49D00B92F67 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0CDA3ADE1E7CE4E000B92F67 /* Player.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		3B22EAFD691D52C64ED19DFD /* Pods */ = {
@@ -228,8 +248,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CDA3ADA1E7CD3BB00B92F67 /* LoginRegisterController.swift in Sources */,
+				0CDA3ADC1E7CE1A200B92F67 /* SelectSportController.swift in Sources */,
+				0CDA3AE31E7D0B1F00B92F67 /* MoreInfoController.swift in Sources */,
 				0C0486B81E7CCE9500DA7123 /* ViewController.swift in Sources */,
 				057999071E7D1E2100CEB0E9 /* Game.swift in Sources */,
+				0CDA3ADF1E7CE4E000B92F67 /* Player.swift in Sources */,
 				0C0486B61E7CCE9500DA7123 /* AppDelegate.swift in Sources */,
 				057999051E7CFB7000CEB0E9 /* MatchesViewController.swift in Sources */,
 				057999011E7CED3700CEB0E9 /* CalendarThumbnailView.swift in Sources */,
