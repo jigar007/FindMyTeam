@@ -23,7 +23,7 @@ class LoginRegisterController: UIViewController {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Snapchat_Logo")
+        imageView.image = UIImage(named: "World-Puzzle-Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -59,18 +59,7 @@ class LoginRegisterController: UIViewController {
         return button
     }()
     
-    lazy var forgetPasswordButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 255, g: 96, b: 136)
-        button.setTitle("", for: UIControlState())
-        button.setTitleColor(UIColor.white, for: UIControlState())
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.addTarget(self, action: #selector(handleForgetPassword), for: .touchUpInside)
-        
-        return button
-    }()
+   
 
     
     let nameTextField: UITextField = {
@@ -95,6 +84,34 @@ class LoginRegisterController: UIViewController {
     }()
     
     let emailSeparatorView: UIView = {
+        let es = UIView()
+        es.backgroundColor = UIColor(r: 220, g: 220, b: 220)
+        es.translatesAutoresizingMaskIntoConstraints = false
+        return es
+    }()
+    
+    let ageTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Age"
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
+    }()
+    
+    let ageSeparatorView: UIView = {
+        let es = UIView()
+        es.backgroundColor = UIColor(r: 220, g: 220, b: 220)
+        es.translatesAutoresizingMaskIntoConstraints = false
+        return es
+    }()
+    
+    let phoneTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Phone number"
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
+    }()
+    
+    let phoneSeparatorView: UIView = {
         let es = UIView()
         es.backgroundColor = UIColor(r: 220, g: 220, b: 220)
         es.translatesAutoresizingMaskIntoConstraints = false
@@ -149,8 +166,7 @@ class LoginRegisterController: UIViewController {
                 return
             } else {
 
-                self.navigationController?.pushViewController(SelectSportController(), animated: true)
-                
+                self.dismiss(animated: true, completion: nil)
             }
         })
     
@@ -164,39 +180,10 @@ class LoginRegisterController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func handleForgetPassword (){
-        guard let email = emailTextField.text else{
-             self.displayAlert(title: "Invalid Form", message: "Please fill in your email!")
-             return
-        }
-        
-        FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
     
-             if let error = error {
-                if let errCode = FIRAuthErrorCode(rawValue: error._code) {
-                    switch errCode {
-                    case .errorCodeInvalidEmail:
-                        self.displayAlert(title: "Invalid Email", message: "Please check your email format!")
-                    case .errorCodeNetworkError:
-                        self.displayAlert(title: "Netword Error", message: "No network connection!")
-                    case .errorCodeUserNotFound:
-                         self.displayAlert(title: "No User Found", message: "No user record found!")
-                    default:
-                        print("unknown error")
-                        print(error)
-                    }
-                }
-            }else{
-                self.emailTextField.text = ""
-                self.displayAlert(title: "Success", message: "Password reset email sent!")
-
-            }
-        })
-
-    }
     
     func handleRegister() {
-        guard let email = emailTextField.text, let username = nameTextField.text, let password = passwordTextField.text else {
+        guard let email = emailTextField.text, let username = nameTextField.text, let password = passwordTextField.text, let age = ageTextField.text, let phone = phoneTextField.text else {
             print("Form is not valid!")
             return
         }
@@ -235,7 +222,7 @@ class LoginRegisterController: UIViewController {
                 
                 let ref = FIRDatabase.database().reference()
                 let userRef = ref.child("users").child(uid)
-                let values = ["name": username, "email": email]
+                let values = ["name": username, "email": email, "age": age, "phone": phone]
  
                 userRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
                     if error != nil {
@@ -257,11 +244,11 @@ class LoginRegisterController: UIViewController {
         loginRegisterButton.setTitle(title, for: UIControlState())
         
         // inputContainerView height
-        inputContainerViewHeightConstraint?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 100 : 150
+        inputContainerViewHeightConstraint?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 100 : 250
         
         // nameTextField height
         nameTextFieldHeightConstraint?.isActive = false
-        nameTextFieldHeightConstraint = nameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/3)
+        nameTextFieldHeightConstraint = nameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/5)
         nameTextFieldHeightConstraint?.isActive = true
         
         // nameTextField placeholder and text
@@ -275,23 +262,44 @@ class LoginRegisterController: UIViewController {
         
         // emailTextField height
         emailTextFieldHeightConstraint?.isActive = false
-        emailTextFieldHeightConstraint = emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
+        emailTextFieldHeightConstraint = emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/5)
         emailTextFieldHeightConstraint?.isActive = true
         
         
+        // phoneTextField height
+        phoneTextFieldHeightConstraint?.isActive = false
+        phoneTextFieldHeightConstraint = phoneTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/5)
+        phoneTextFieldHeightConstraint?.isActive = true
+        
+        // phoneTextField placeholder and text
+        phoneTextField.placeholder = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? "" : "Phone number"
+        phoneTextField.text = nil
+        
+        // phoneSeparator Height
+        phoneSeparatorHeightConstraint?.isActive = false
+        phoneSeparatorHeightConstraint = phoneSeparatorView.heightAnchor.constraint(equalToConstant: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1)
+        phoneSeparatorHeightConstraint?.isActive = true
+        
+        // ageTextField height
+        ageTextFieldHeightConstraint?.isActive = false
+        ageTextFieldHeightConstraint = ageTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/5)
+        ageTextFieldHeightConstraint?.isActive = true
+        
+        // ageTextField placeholder and text
+        ageTextField.placeholder = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? "" : "Age"
+        ageTextField.text = nil
+        
+        // ageSeparator Height
+        ageSeparatorHeightConstraint?.isActive = false
+        ageSeparatorHeightConstraint = ageSeparatorView.heightAnchor.constraint(equalToConstant: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1)
+        ageSeparatorHeightConstraint?.isActive = true
+        
         // passwordTextField height
         passwordTextFieldHeightConstraint?.isActive = false
-        passwordTextFieldHeightConstraint = passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier:loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
+        passwordTextFieldHeightConstraint = passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier:loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/5)
         passwordTextFieldHeightConstraint?.isActive = true
         
-        forgetPasswordHeightConstraint?.isActive = false
-        forgetPasswordHeightConstraint = forgetPasswordButton.heightAnchor.constraint(equalToConstant: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 50 : 0)
-        if loginRegisterSegmentedControl.selectedSegmentIndex == 1 {
-            forgetPasswordButton.setTitle("", for: UIControlState())
-        }else{
-            forgetPasswordButton.setTitle("Forget Password", for: UIControlState())
-        }
-        forgetPasswordHeightConstraint?.isActive = true
+        
         
         // Handle centerYAnchor for input container
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0{
@@ -314,7 +322,7 @@ class LoginRegisterController: UIViewController {
         view.addSubview(loginRegisterSegmentedControl)
         view.addSubview(spinnerView)
         view.bringSubview(toFront: spinnerView)
-        view.addSubview(forgetPasswordButton)
+        
         
         setupSpinnerView()
         setupInputContainerView()
@@ -322,7 +330,6 @@ class LoginRegisterController: UIViewController {
         setupProfileImageView()
         setupLoginRegisterSegmentedControl()
         
-        setupForgetPasswordButton()
         setupKeyboardObservers()
         
         navigationController?.navigationBar.isHidden = true
@@ -347,9 +354,12 @@ class LoginRegisterController: UIViewController {
     var inputContainerViewHeightConstraint: NSLayoutConstraint?
     var nameTextFieldHeightConstraint: NSLayoutConstraint?
     var emailTextFieldHeightConstraint: NSLayoutConstraint?
+    var ageTextFieldHeightConstraint: NSLayoutConstraint?
+    var phoneTextFieldHeightConstraint: NSLayoutConstraint?
     var passwordTextFieldHeightConstraint: NSLayoutConstraint?
     var nameSeparatorHeightConstraint: NSLayoutConstraint?
-    var forgetPasswordHeightConstraint: NSLayoutConstraint?
+    var ageSeparatorHeightConstraint: NSLayoutConstraint?
+    var phoneSeparatorHeightConstraint: NSLayoutConstraint?
     var inputContainerCenterYAnchor : NSLayoutConstraint?
     fileprivate func setupInputContainerView() {
         //setup constraints, x, y, width, height
@@ -357,7 +367,7 @@ class LoginRegisterController: UIViewController {
         inputContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         inputContainerCenterYAnchor =  inputContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         inputContainerCenterYAnchor?.isActive = true
-        inputContainerViewHeightConstraint = inputContainerView.heightAnchor.constraint(equalToConstant: 150)
+        inputContainerViewHeightConstraint = inputContainerView.heightAnchor.constraint(equalToConstant: 250)
         inputContainerViewHeightConstraint?.isActive = true
         
         //setup fields in container
@@ -366,12 +376,16 @@ class LoginRegisterController: UIViewController {
         inputContainerView.addSubview(emailTextField)
         inputContainerView.addSubview(emailSeparatorView)
         inputContainerView.addSubview(passwordTextField)
+        inputContainerView.addSubview(ageTextField)
+        inputContainerView.addSubview(phoneTextField)
+        inputContainerView.addSubview(ageSeparatorView)
+        inputContainerView.addSubview(phoneSeparatorView)
         
         //setup constraints, x, y, width, height
         nameTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true
         nameTextField.topAnchor.constraint(equalTo: inputContainerView.topAnchor).isActive = true
         nameTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
-        nameTextFieldHeightConstraint = nameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3)
+        nameTextFieldHeightConstraint = nameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/5)
         nameTextFieldHeightConstraint?.isActive = true
         
         //setup constraints, x, y, width, height
@@ -385,7 +399,7 @@ class LoginRegisterController: UIViewController {
         emailTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true
         emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
         emailTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
-        emailTextFieldHeightConstraint = emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3)
+        emailTextFieldHeightConstraint = emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/5)
         emailTextFieldHeightConstraint?.isActive = true
         
         //setup constraints, x, y, width, height
@@ -395,10 +409,38 @@ class LoginRegisterController: UIViewController {
         emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         //setup constraints, x, y, width, height
+        phoneTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true
+        phoneTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        phoneTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
+        phoneTextFieldHeightConstraint = phoneTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/5)
+        phoneTextFieldHeightConstraint?.isActive = true
+        
+        //setup constraints, x, y, width, height
+        phoneSeparatorView.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor).isActive = true
+        phoneSeparatorView.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor).isActive = true
+        phoneSeparatorView.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
+        phoneSeparatorHeightConstraint = phoneSeparatorView.heightAnchor.constraint(equalToConstant: 1)
+        phoneSeparatorHeightConstraint?.isActive = true
+        
+        //setup constraints, x, y, width, height
+        ageTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true
+        ageTextField.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor).isActive = true
+        ageTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
+        ageTextFieldHeightConstraint = ageTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/5)
+        ageTextFieldHeightConstraint?.isActive = true
+        
+        //setup constraints, x, y, width, height
+        ageSeparatorView.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor).isActive = true
+        ageSeparatorView.topAnchor.constraint(equalTo: ageTextField.bottomAnchor).isActive = true
+        ageSeparatorView.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
+        ageSeparatorHeightConstraint = ageSeparatorView.heightAnchor.constraint(equalToConstant: 1)
+        ageSeparatorHeightConstraint?.isActive = true
+        
+        //setup constraints, x, y, width, height
         passwordTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: ageTextField.bottomAnchor).isActive = true
         passwordTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
-        passwordTextFieldHeightConstraint = passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3)
+        passwordTextFieldHeightConstraint = passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/5)
         passwordTextFieldHeightConstraint?.isActive = true
 
     }
@@ -411,16 +453,7 @@ class LoginRegisterController: UIViewController {
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    fileprivate func setupForgetPasswordButton() {
-        //setup constraints, x, y, width, height
-        forgetPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        forgetPasswordButton.topAnchor.constraint(equalTo: loginRegisterButton.bottomAnchor, constant: 12).isActive = true
-        forgetPasswordButton.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
-        forgetPasswordHeightConstraint = forgetPasswordButton.heightAnchor.constraint(equalToConstant: 0)
-        forgetPasswordHeightConstraint?.isActive = true
-        forgetPasswordHeightConstraint?.isActive = true
 
-    }
 
     
     fileprivate func setupProfileImageView() {

@@ -22,7 +22,7 @@ class SelectSportController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Send To...", style: .plain, target: self, action: #selector(handleCancle))
         navigationItem.leftBarButtonItem?.tintColor = UIColor(r: 55, g: 179, b: 229)
         navigationController?.navigationBar.isTranslucent = false
@@ -151,16 +151,18 @@ class SelectSportController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "" : "FRIENDS"
+        return section == 0 ? "Tell us your favuorite sports" : ""
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.textLabel?.textColor = UIColor(r: 55, g: 179, b: 229)
-            headerView.tintColor = .white
-            headerView.textLabel?.font = UIFont.systemFont(ofSize: 14)
-        }
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = UIColor.init(r: 23, g: 141, b: 254)
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 23)
+        header.backgroundView = UIView()
+        header.textLabel?.frame = header.frame
+        header.textLabel?.textAlignment = .left
     }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
