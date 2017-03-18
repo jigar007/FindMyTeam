@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>770992892187-l4m848bi1oabdkise9q7i15pnnodssfm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.770992892187-l4m848bi1oabdkise9q7i15pnnodssfm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCo5ZMG75WCsRSDCbaDLN1oCyK_OSnIAo8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>770992892187</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>edu.unimelb.Codebrew2017</string>
+	<key>PROJECT_ID</key>
+	<string>codebrew2017</string>
+	<key>STORAGE_BUCKET</key>
+	<string>codebrew2017.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:770992892187:ios:9fbbe68f3ab365be</string>
+	<key>DATABASE_URL</key>
+	<string>https://codebrew2017.firebaseio.com</string>
+</dict>
+</plist>
