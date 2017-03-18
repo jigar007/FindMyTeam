@@ -230,6 +230,21 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        //join a match
+        let joinAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Join!", handler: { (action, indexPath) -> Void in
+            
+            //TODO: update firebase and reload data
+            
+        })
+        //getItAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
+        joinAction.backgroundColor = UIColor.green
+        //productsTableView.setEditing(false, animated: true)
+        return [joinAction]
+    }
+
 
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
