@@ -18,6 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // Initialize Firebase
         FIRApp.configure()
+        
+        //customize UINavigationBar appearance
+        UINavigationBar.appearance().barStyle = UIBarStyle.default
+        //UINavigationBar.appearance().barTintColor = UIColor.blackColor() //UIColor(red: 242.0/255.0, green: 116.0/255.0, blue: 119.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor(red: 0.0/255.0, green: 51.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+        if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 0.0/255.0, green: 51.0/255.0, blue: 102.0/255.0, alpha: 1.0), NSFontAttributeName:barFont]
+        }
+        
+        //customize UITabBar appearance
+        UITabBar.appearance().tintColor = UIColor(red: 0.0/255.0, green: 51.0/255.0, blue: 102.0/255.0, alpha: 1.0)
         return true
     }
 
