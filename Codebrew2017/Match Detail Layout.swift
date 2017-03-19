@@ -43,19 +43,27 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
                 player.id = playerID
                 player.age = value?["age"] as? String
                 player.name = value?["name"] as? String
+                print("-------------------------------")
+                print(player.name)
+                print("-------------------------------")
                 player.email = value?["email"] as? String
                 player.phone = value?["phone"] as? String
-                player.rating = value?["rating"] as? Float
+                let ratingString = value?["rating"] as? String
+                player.rating = Float(ratingString!)
+                print("RATING = " + ratingString!)
                 player.numberOfRatings = value?["ratingsNumber"] as? Int
                 player.image = value?["image"] as? String
                 self.players.append(player)
                 print(self.players)
+                print ("PLAYER COUNT:" + String(self.players.count))
+
                 OperationQueue.main.addOperation({() -> Void in
-                                    self.tableView.reloadData()
-                                })
+                    self.tableView.reloadData()
+                })
             })
             
         }
+        
         
         
         
@@ -144,12 +152,14 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //using custom cell
+        print ("PLAYER COUNT AGAIN:" + String(self.players.count))
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCustomCell", for: indexPath) as! PlayerTableViewCell
         let player = players[(indexPath as NSIndexPath).row]
         
-        cell.ageLabel.text = String(describing: player.age)
+        cell.ageLabel.text = player.age
         cell.nameLabel.text = player.name
-        cell.phoneNumberLabel.text = String(describing: player.phone)
+        cell.phoneNumberLabel.text = player.phone
         cell.playerImageView.image = UIImage(named: "defaultPhoto")
         cell.ratingLabel.text = String(format:"%.1f ⭐️", player.rating! )
         
