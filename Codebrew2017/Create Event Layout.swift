@@ -74,7 +74,7 @@ class Create_Event_Layout: UIViewController {
     @IBAction func createNewEvent(_ sender: Any) {
         
         let ref = FIRDatabase.database().reference().child("game").childByAutoId()
-        let dateFormatter = DateFormatter()
+        //let dateFormatter = DateFormatter()
         let uid = FIRAuth.auth()?.currentUser?.uid
         
         

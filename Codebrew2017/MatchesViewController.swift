@@ -242,15 +242,19 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
         let joinAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Join!", handler: { (action, indexPath) -> Void in
                 let game = self.games[(indexPath as NSIndexPath).row]
                 let uid = (FIRAuth.auth()?.currentUser?.uid)! as String
-                print("current user id")
-                print(uid)
             
-                var confirmedPlayers: [String]?
-                confirmedPlayers?.append(uid)
-            for element in confirmedPlayers! {
-                print("element in array")
-                print(element)
-            }
+            
+            self.firebaseReference.child("game").child(game.uid!).child("confirmedPlayer").childByAutoId().updateChildValues(["id": uid], withCompletionBlock: {
+                    (error, ref) in
+                    if error != nil {
+                        print(error!)
+                        return
+                    } else {
+                        print("success")
+                        self.refreshData()
+                    }
+            })
+
             
         })
         //getItAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
