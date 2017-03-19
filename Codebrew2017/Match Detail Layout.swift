@@ -168,31 +168,17 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
         }
     }
     
+    @IBAction func unwindBackFromRating(segue: UIStoryboardSegue) {}
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "RatePlayer") {
-            if let senderCell = sender as? PlayerTableViewCell {
-               // if let destinationController = segue.destination as? GetProductViewController {
-//                    if let indexPath = productsTableView.indexPathForSelectedRow {
-//                        //print("segue ok!")
-//                        let backItem = UIBarButtonItem()
-//                        backItem.title = ""
-//                        navigationItem.backBarButtonItem = backItem
-//                        
-//                        destinationController.hidesBottomBarWhenPushed = true
-//                        destinationController.name = products[(indexPath as NSIndexPath).row].name
-//                        destinationController.address = products[(indexPath as NSIndexPath).row].address
-//                        destinationController.quantity = products[(indexPath as NSIndexPath).row].quantity
-//                        destinationController.startDate = products[(indexPath as NSIndexPath).row].availableTimeStart
-//                        destinationController.endDate = products[(indexPath as NSIndexPath).row].availableTimeEnd
-//                        destinationController.expiryDate = products[(indexPath as NSIndexPath).row].expireTime
-//                        destinationController.provider = products[(indexPath as NSIndexPath).row].provider
-//                        destinationController.actionLabelText = "Get It"
-//                        destinationController.actionLabelColor = UIColor.green
-//                        //destinationController.trip = trips?[indexPath.row]
-//                        //destinationController.hidesBottomBarWhenPushed = true
-//                    }
-                //}
+            if let destinationController = segue.destination as? RatePlayerViewController {
+                //let cell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as? PlayerTableViewCell
+                //let player = players[(indexPath as NSIndexPath).row]
+                let indexPath = self.tableView.indexPathForSelectedRow!
+                destinationController.player = self.players[(indexPath as NSIndexPath).row]
             }
         }
     }

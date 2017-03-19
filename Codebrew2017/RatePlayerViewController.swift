@@ -11,14 +11,38 @@ import UIKit
 class RatePlayerViewController: UIViewController {
 
     @IBOutlet weak var playerImage: UIImageView!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var playerName: UILabel!
     
+    @IBOutlet weak var ratingControl: RatingControl!
     
+    var player = Player()
+    
+    @IBAction func goBack() {
+        self.performSegue(withIdentifier: "unwindBackFromRating", sender: self)
+    }
+    
+    @IBAction func ratePlayer(_ sender: Any) {
+        
+        player.numberOfRatings = player.numberOfRatings! + 1
+        player.rating = player.rating! + (player.rating! - Float(self.ratingControl.playerRating/player.numberOfRatings!))
+        
+        //TODO: update firebase
+        //player.id
+        //player.rating
+        //player.numberOfRatings
+        
+
+        
+        self.performSegue(withIdentifier: "unwindToMenu", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.playerName.text = player.name
     }
 
     override func didReceiveMemoryWarning() {

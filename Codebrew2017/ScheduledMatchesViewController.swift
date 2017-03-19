@@ -249,6 +249,9 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
     //MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        performSegue(withIdentifier: "RatePlayer", sender: tableView.cellForRow(at: indexPath))
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

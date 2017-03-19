@@ -13,6 +13,7 @@ import UIKit
     //MARK: Properties
     
     private var ratingButtons = [UIButton]()
+    var playerRating = Int()
     
     var rating = 0 {
         didSet {
@@ -124,7 +125,7 @@ import UIKit
             } else {
                 hintString = nil
             }
-            
+            playerRating = rating
             let valueString: String
             switch (rating) {
             case 0:
