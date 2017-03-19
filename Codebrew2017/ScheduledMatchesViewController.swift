@@ -92,6 +92,15 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
                         
                     }
                 }
+                
+                if (self.userID == newGame.organizerUid) {
+                    
+                    if (newGame.confirmedPlayers.contains(self.userID!)) {
+                        
+                        self.games.append(newGame)
+                    }
+                    
+                }
 //                let confirmedPlayer = dict.value(forKey: "confirmedPlayer") as? NSDictionary
 //                
 //                if confirmedPlayer != nil {
