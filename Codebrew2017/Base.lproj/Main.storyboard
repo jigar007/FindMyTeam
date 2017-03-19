@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="383" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nb5-IV-p59" id="c4h-hi-ueq">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfC-Fv-Wts" userLabel="Price Label">
@@ -114,8 +114,6 @@
                     <navigationItem key="navigationItem" title="Scheduled Matches" id="NOy-Dm-D4E" userLabel="Scheduled Matches"/>
                     <connections>
                         <outlet property="scheduledMatchesTableView" destination="zKs-lV-VVy" id="W3c-Nn-Zxg"/>
-
-                        <segue destination="MgY-gb-j1R" kind="presentation" identifier="RatePlayer" modalTransitionStyle="crossDissolve" id="PxB-cE-iNG"/>
                         <segue destination="TMT-tS-sMj" kind="show" identifier="ShowPlayers" id="p7g-Cl-eYK"/>
                     </connections>
                 </viewController>
@@ -143,7 +141,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PXl-q6-6fI" id="nES-t7-CK2">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="elf-GW-ODQ" userLabel="Organizer Image View">
@@ -295,11 +293,11 @@
             </objects>
             <point key="canvasLocation" x="-604" y="334"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Calendar-->
         <scene sceneID="l2t-cl-ZMs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pOg-31-7OE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="calendar" id="NdT-CP-O80"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" id="NdT-CP-O80"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T9H-js-p71">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -437,7 +435,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5jI-4p-X5e" id="pJv-P3-hgB">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bxZ-Fo-kjx" userLabel="Player Image View">

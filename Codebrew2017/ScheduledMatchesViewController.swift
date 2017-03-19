@@ -40,7 +40,7 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
     
     override func viewWillAppear(_ animated: Bool) {
         userID = FIRAuth.auth()?.currentUser?.uid
-        refreshData()
+        //refreshData()
     }
     
     func refreshData() {
