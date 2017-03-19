@@ -114,9 +114,7 @@
                     <navigationItem key="navigationItem" title="Scheduled Matches" id="NOy-Dm-D4E" userLabel="Scheduled Matches"/>
                     <connections>
                         <outlet property="scheduledMatchesTableView" destination="zKs-lV-VVy" id="W3c-Nn-Zxg"/>
-
-                        <segue destination="MgY-gb-j1R" kind="presentation" identifier="RatePlayer" modalTransitionStyle="crossDissolve" id="PxB-cE-iNG"/>
-                        <segue destination="TMT-tS-sMj" kind="show" identifier="ShowPlayers" id="p7g-Cl-eYK"/>
+                        <segue destination="4Ac-Hn-IN3" kind="show" identifier="ShowPlayers" id="5jE-pv-lmV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTC-PZ-OlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,7 +431,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MatchCustomCell" rowHeight="75" id="5jI-4p-X5e" userLabel="PlayerCustomCell" customClass="PlayerTableViewCell" customModule="Codebrew2017" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerCustomCell" rowHeight="75" id="5jI-4p-X5e" userLabel="PlayerCustomCell" customClass="PlayerTableViewCell" customModule="Codebrew2017" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5jI-4p-X5e" id="pJv-P3-hgB">
@@ -534,7 +532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MWQ-Ch-k6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4303.1999999999998" y="727.28635682158927"/>
+            <point key="canvasLocation" x="2742" y="727"/>
         </scene>
         <!--New-->
         <scene sceneID="U3k-Tg-egJ">
@@ -702,24 +700,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2794" y="1663"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="bpX-Gs-iP6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TMT-tS-sMj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2yf-GQ-oXs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4Ac-Hn-IN3" kind="relationship" relationship="rootViewController" id="S8z-jM-RXN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7m6-93-b4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3364" y="726.38680659670172"/>
         </scene>
     </scenes>
     <resources>

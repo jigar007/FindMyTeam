@@ -18,6 +18,7 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
     
     var payersId = [String]()
     var players = [Player]()
+    var confirmedPlayers = [String]()
     var firebaseReference: FIRDatabaseReference!
     let userID = FIRAuth.auth()?.currentUser?.uid
     
@@ -33,8 +34,31 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
     
     func refreshData() {
         self.players = [Player]()
-        //get data from firebase
-        //TODO: get users details
+        print("!!!!!!!!!!!!")
+        print(confirmedPlayers)
+        for playerID in confirmedPlayers {
+            firebaseReference.child("users").child(playerID).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                let player = Player()
+                let value = snapshot.value as? NSDictionary
+                player.id = playerID
+                player.age = value?["age"] as? String
+                player.name = value?["name"] as? String
+                player.email = value?["email"] as? String
+                player.phone = value?["phone"] as? String
+                player.rating = value?["rating"] as? Float
+                player.numberOfRatings = value?["ratingsNumber"] as? Int
+                player.image = value?["image"] as? String
+                self.players.append(player)
+                print(self.players)
+                OperationQueue.main.addOperation({() -> Void in
+                                    self.tableView.reloadData()
+                                })
+            })
+            
+        }
+        
+        
         
 //        firebaseReference.child("game").observeSingleEvent(of: .value, with: { (snapshot) in
 //            // Get all the games
