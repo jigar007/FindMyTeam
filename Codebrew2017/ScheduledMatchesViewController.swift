@@ -19,6 +19,7 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
     var games = [Game]()
     var firebaseReference: FIRDatabaseReference!
     var userID = FIRAuth.auth()?.currentUser?.uid
+    var selectedRow: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,13 +77,24 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
                 newGame.latitude = Double(temp!)
                 temp = location.value(forKey: "longitude") as! String?
                 newGame.longitude = Double(temp!)
-                let confirmedPlayer = dict.value(forKey: "confirmedPlayer") as? NSDictionary
+                let confirmedPlayers = dict.value(forKey: "confirmedPlayer") as? [String: AnyObject]
                 
-                if confirmedPlayer != nil {
-                    for (_, value) in confirmedPlayer! {
-                        newGame.confirmedPlayers.append(value as! String)
+                if confirmedPlayers != nil {
+                    for i in confirmedPlayers! {
+                        let value = i.value
+                        
+                        newGame.confirmedPlayers.append(value["id"]! as! String)
+                        
+                        
                     }
                 }
+//                let confirmedPlayer = dict.value(forKey: "confirmedPlayer") as? NSDictionary
+//                
+//                if confirmedPlayer != nil {
+//                    for (_, value) in confirmedPlayer! {
+//                        newGame.confirmedPlayers.append(value as! String)
+//                    }
+//                }
                 //
                 //if ((self.userID) != nil) {
                 //if (self.userID != newGame.organizerUid) {
@@ -249,18 +261,31 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
     //MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath.item
+        performSegue(withIdentifier: "ShowPlayers", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    /*
+    
+    
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if (segue.identifier == "ShowPlayers") {
+            let destinationController = segue.destination as? Match_Detail_Layout
+            let players = [Player]()
+            print(games[selectedRow!])
+            
+                
+            destinationController?.players = players
+            
+            
+
+        }
      }
-     */
+ 
     
     //MARK: - UIScrollView Delegate
     
