@@ -138,13 +138,6 @@ class Create_Event_Layout: UIViewController, UITextFieldDelegate {
         })
         
     }
-    func handleSend(){
-        if let uid = FIRAuth.auth()?.currentUser?.uid {
-            self.currentUid = uid
-            
 
-            
-        }
-    }
     
 }
