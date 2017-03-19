@@ -150,7 +150,8 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //TODO: add rating segue
-        performSegue(withIdentifier: "RatePlayer", sender: nil)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        performSegue(withIdentifier: "RatePlayer", sender: tableView.cellForRow(at: indexPath))
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
