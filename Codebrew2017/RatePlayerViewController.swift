@@ -25,9 +25,9 @@ class RatePlayerViewController: UIViewController {
     @IBAction func ratePlayer(_ sender: Any) {
         
         player.numberOfRatings = player.numberOfRatings! + 1
-        player.rating = player.rating! + (player.rating! - Float(self.ratingControl.playerRating/player.numberOfRatings!))
-        let playerRating = String(format:"%.1f $", player.rating!)
-        let ratingNumber = String(format:"%d $", player.numberOfRatings!)
+        player.rating = player.rating! + Float(self.ratingControl.playerRating/player.numberOfRatings!)
+        let playerRating = String(format:"%.1f", player.rating!)
+        let ratingNumber = String(format:"%d", player.numberOfRatings!)
         
         FIRDatabase.database().reference().child("users").child(player.id!).updateChildValues(["rating":playerRating, "ratingsNumber": ratingNumber], withCompletionBlock: {
             (error, ref) in

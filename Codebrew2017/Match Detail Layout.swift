@@ -51,7 +51,8 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
                 let ratingString = value?["rating"] as? String
                 player.rating = Float(ratingString!)
                 print("RATING = " + ratingString!)
-                player.numberOfRatings = value?["ratingsNumber"] as? Int
+                let numberString = value?["ratingsNumber"] as? String
+                player.numberOfRatings = Int(numberString!)
                 player.image = value?["image"] as? String
                 self.players.append(player)
                 print(self.players)
