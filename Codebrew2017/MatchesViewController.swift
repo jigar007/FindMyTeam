@@ -18,14 +18,19 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
     var refreshControl: UIRefreshControl!
     var games = [Game]()
     var firebaseReference: FIRDatabaseReference!
+
     var userID: String?
+
     
     @IBAction func showInMap(_ sender: AnyObject) {
         performSegue(withIdentifier: "GoToMap", sender: nil)
     }
     
+ 
+    
     override func viewDidAppear(_ animated: Bool) {
         checkIfUserIsLoggedIn()
+        
     }
     @IBAction func logout(_ sender: UIBarButtonItem) {
         do {
@@ -120,6 +125,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
                 if (self.userID != newGame.organizerUid) {
 
                     if !(newGame.confirmedPlayers.contains(self.userID!)) {
+
                         self.games.append(newGame)
                     }
 
@@ -195,7 +201,8 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
             }
         })
         
-        cell.organizerImageView = nil
+    
+        cell.organizerImageView.image = UIImage(named: game.sport!)
         cell.sportTypeLable.text = game.sport
         
         let date = game.date

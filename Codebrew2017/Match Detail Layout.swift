@@ -19,7 +19,7 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
     var payersId = [String]()
     var players = [Player]()
     var firebaseReference: FIRDatabaseReference!
-    var userID = FIRAuth.auth()?.currentUser?.uid
+    let userID = FIRAuth.auth()?.currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +31,10 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
         refreshData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        userID = FIRAuth.auth()?.currentUser?.uid
-    }
-    
     func refreshData() {
         self.players = [Player]()
         //get data from firebase
+        //TODO: get users details
         
 //        firebaseReference.child("game").observeSingleEvent(of: .value, with: { (snapshot) in
 //            // Get all the games
@@ -127,27 +124,15 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCustomCell", for: indexPath) as! PlayerTableViewCell
         let player = players[(indexPath as NSIndexPath).row]
         
-//        cell.ageLabel.text = player.age
-//        cell.nameLabel = player.name
-//        cell.phoneNumberLabel = player
-//        cell.playerImageView
+        cell.ageLabel.text = String(describing: player.age)
+        cell.nameLabel.text = player.name
+        cell.phoneNumberLabel.text = String(describing: player.phone)
+        cell.playerImageView.image = UIImage(named: "defaultPhoto")
         cell.ratingLabel.text = String(format:"%.1f ⭐️", player.rating! )
         
         return cell
         
         
-    }
-    
-    func postalAddressFromAddressDictionary(_ addressdictionary: Dictionary<NSObject,AnyObject>) -> CNMutablePostalAddress {
-        let address = CNMutablePostalAddress()
-        
-        address.street = addressdictionary["Street" as NSObject] as? String ?? ""
-        address.state = addressdictionary["State" as NSObject] as? String ?? ""
-        address.city = addressdictionary["City" as NSObject] as? String ?? ""
-        address.country = addressdictionary["Country" as NSObject] as? String ?? ""
-        address.postalCode = addressdictionary["ZIP" as NSObject] as? String ?? ""
-        
-        return address
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,30 +142,17 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
         //        } else {
         //            return 0
         //        }
-        //return games.count
-        return 3
+        return players.count
     }
     
     //MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //TODO: add rating segue
+        performSegue(withIdentifier: "RatePlayer", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        //join a match
-        let joinAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Join!", handler: { (action, indexPath) -> Void in
-            
-            //TODO: update firebase and reload data
-            
-        })
-        //getItAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        joinAction.backgroundColor = UIColor.green
-        //productsTableView.setEditing(false, animated: true)
-        return [joinAction]
-    }
-    
     
     //MARK: - UIScrollView Delegate
     
@@ -192,6 +164,35 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
         } else {
             //            print("down")
             //navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "RatePlayer") {
+            if let senderCell = sender as? PlayerTableViewCell {
+               // if let destinationController = segue.destination as? GetProductViewController {
+//                    if let indexPath = productsTableView.indexPathForSelectedRow {
+//                        //print("segue ok!")
+//                        let backItem = UIBarButtonItem()
+//                        backItem.title = ""
+//                        navigationItem.backBarButtonItem = backItem
+//                        
+//                        destinationController.hidesBottomBarWhenPushed = true
+//                        destinationController.name = products[(indexPath as NSIndexPath).row].name
+//                        destinationController.address = products[(indexPath as NSIndexPath).row].address
+//                        destinationController.quantity = products[(indexPath as NSIndexPath).row].quantity
+//                        destinationController.startDate = products[(indexPath as NSIndexPath).row].availableTimeStart
+//                        destinationController.endDate = products[(indexPath as NSIndexPath).row].availableTimeEnd
+//                        destinationController.expiryDate = products[(indexPath as NSIndexPath).row].expireTime
+//                        destinationController.provider = products[(indexPath as NSIndexPath).row].provider
+//                        destinationController.actionLabelText = "Get It"
+//                        destinationController.actionLabelColor = UIColor.green
+//                        //destinationController.trip = trips?[indexPath.row]
+//                        //destinationController.hidesBottomBarWhenPushed = true
+//                    }
+                //}
+            }
         }
     }
 }

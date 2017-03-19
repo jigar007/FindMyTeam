@@ -14,6 +14,7 @@ class Player: NSObject {
     var email: String?
     var age: Int?
     var sports = [String]()
-    var numberOfMatch: Int?
+    var numberOfRatings: Int?
     var rating: Float?
+    var phone: Int?
 }
