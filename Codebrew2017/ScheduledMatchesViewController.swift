@@ -75,7 +75,7 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
                 
                 if confirmedPlayer != nil {
                     for (_, value) in confirmedPlayer! {
-                        newGame.confirmedPlayers?.append(value as! String)
+                        newGame.confirmedPlayers.append(value as! String)
                     }
                 }
                 //

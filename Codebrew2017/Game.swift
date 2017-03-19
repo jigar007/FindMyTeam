@@ -16,6 +16,6 @@ class Game: NSObject {
     var organizerUid: String?
     var playersNeeded: Int?
     var sport: String?
-    var confirmedPlayers: [String]?
+    var confirmedPlayers = [String]()
     var price: Double?
 }

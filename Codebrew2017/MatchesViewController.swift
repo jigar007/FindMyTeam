@@ -18,7 +18,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
     var refreshControl: UIRefreshControl!
     var games = [Game]()
     var firebaseReference: FIRDatabaseReference!
-    let userID = FIRAuth.auth()?.currentUser?.uid
+    var userID: String?
     
     @IBAction func showInMap(_ sender: AnyObject) {
         performSegue(withIdentifier: "GoToMap", sender: nil)
@@ -43,8 +43,8 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
     func checkIfUserIsLoggedIn() {
         
         if FIRAuth.auth()?.currentUser?.uid != nil {
-            // User is logged in
-            // Do nothing currently
+            userID = FIRAuth.auth()?.currentUser?.uid
+            refreshData()
         } else {
             // User is not logged in
             let navigationController = UINavigationController(rootViewController: LoginRegisterController())
@@ -105,21 +105,26 @@ class MatchesViewController: UIViewController, UITableViewDelegate,  UITableView
                 newGame.latitude = Double(temp!)
                 temp = location.value(forKey: "longitude") as! String?
                 newGame.longitude = Double(temp!)
-                let confirmedPlayer = dict.value(forKey: "confirmedPlayer") as? NSDictionary
+                let confirmedPlayers = dict.value(forKey: "confirmedPlayer") as? [AnyObject]
                 
-                if confirmedPlayer != nil {
-                    for (_, value) in confirmedPlayer! {
-                        newGame.confirmedPlayers?.append(value as! String)
+                if confirmedPlayers != nil {
+                    for i in confirmedPlayers! {
+                        if i is NSDictionary {
+                            newGame.confirmedPlayers.append(i["id"]! as! String)
+                        }
+                        
                     }
                 }
-//                
-                //if ((self.userID) != nil) {
-                //if (self.userID != newGame.organizerUid) {
-                   // if !(newGame.confirmedPlayers?.contains(self.userID!))! {
+
+              
+                if (self.userID != newGame.organizerUid) {
+
+                    if !(newGame.confirmedPlayers.contains(self.userID!)) {
                         self.games.append(newGame)
-                    //}
-                //}
-                //}
+                    }
+
+                }
+
                 
                 print("GAMES:")
                 print(self.games.count)
