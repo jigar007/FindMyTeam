@@ -161,7 +161,24 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
         cell.nameLabel.text = player.name
         cell.phoneNumberLabel.text = player.phone
         cell.playerImageView.image = UIImage(named: "defaultPhoto")
+        cell.playerImageView.layer.cornerRadius = cell.playerImageView.frame.width/2
+        cell.playerImageView.layer.masksToBounds = true
+        cell.playerImageView.contentMode = .scaleAspectFill
         cell.ratingLabel.text = String(format:"%.1f ⭐️", player.rating! )
+        if let urlString = player.image{
+            let imageURL = URL(string: urlString)
+            URLSession.shared.dataTask(with: imageURL!) { (data, response, error) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                DispatchQueue.global().async {
+                    DispatchQueue.main.async {
+                        cell.playerImageView.image = UIImage(data: data!)
+                    }
+                }
+                }.resume()
+        }
         
         return cell
         

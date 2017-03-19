@@ -275,7 +275,7 @@ class LoginRegisterController: UIViewController, UIImagePickerControllerDelegate
                 
                 let ref = FIRDatabase.database().reference()
                 let userRef = ref.child("users").child(uid)
-                let values = ["name": username, "email": email, "age": age, "phone": phone]
+                let values = ["name": username, "email": email, "age": age, "phone": phone, "rating": "4", "ratingsNumber": "1"]
  
                 userRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
                     if error != nil {
