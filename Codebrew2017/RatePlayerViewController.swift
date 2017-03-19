@@ -19,7 +19,7 @@ class RatePlayerViewController: UIViewController {
     var player = Player()
     
     @IBAction func goBack() {
-        self.performSegue(withIdentifier: "unwindBackFromRating", sender: self)
+        self.performSegue(withIdentifier: "unwindToMenu", sender: self)
     }
     
     @IBAction func ratePlayer(_ sender: Any) {

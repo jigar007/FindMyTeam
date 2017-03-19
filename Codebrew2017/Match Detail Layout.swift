@@ -201,7 +201,9 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
         }
     }
     
-    @IBAction func unwindBackFromRating(segue: UIStoryboardSegue) {}
+    @IBAction func unwindBackFromRating(segue: UIStoryboardSegue) {
+        self.performSegue(withIdentifier: "unwindBackFromRating", sender: self)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

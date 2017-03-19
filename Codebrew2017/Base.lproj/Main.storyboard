@@ -691,8 +691,7 @@
                         <outlet property="playerImage" destination="8GA-yy-rDn" id="lC2-t4-SMC"/>
                         <outlet property="playerName" destination="uD4-3h-Imb" id="s4Y-sa-UW0"/>
                         <outlet property="ratingControl" destination="3lD-MS-TTK" id="aSx-eL-AsH"/>
-                        <outlet property="stackView" destination="J8g-jl-Wgd" id="7pq-75-jct"/>
-                        <segue destination="bKv-5h-NEN" kind="unwind" identifier="UnwindFromRating" unwindAction="unwindBackFromRatingWithSegue:" id="dPg-6s-TH2"/>
+                        <segue destination="bKv-5h-NEN" kind="unwind" identifier="unwindBackFromRating" unwindAction="unwindBackFromRatingWithSegue:" id="dPg-6s-TH2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7TF-NA-s8D" sceneMemberID="firstResponder"/>
