@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CoreLocation
 
-class Create_Event_Layout: UIViewController {
+class Create_Event_Layout: UIViewController, UITextFieldDelegate {
     
     var currentUid = String()
     
@@ -27,8 +27,13 @@ class Create_Event_Layout: UIViewController {
     
     override func viewDidLoad() {
         
-        
         super.viewDidLoad()
+        
+        typeOfSport.delegate = self
+        playerNumber.delegate = self
+        location.delegate = self
+        date.delegate = self
+        cost.delegate = self
         
         datePicker.datePickerMode=UIDatePickerMode.dateAndTime
         datePicker.minimumDate = Date()
@@ -48,6 +53,18 @@ class Create_Event_Layout: UIViewController {
         
         self.date.inputView = datePicker
         self.date.inputAccessoryView = toolBar
+        
+        let tapOutsideTF: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.DismissKeyboard))
+        view.addGestureRecognizer(tapOutsideTF)
+    }
+    
+    func DismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +99,7 @@ class Create_Event_Layout: UIViewController {
 //        let formatter = DateFormatter()
 //        formatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
 //        let result = formatter.string(from: date)
-        let value = ["sport": typeOfSport.text!, "Date": date.text!, "prices": cost.text!,  "playersNeeded":playerNumber.text!, "organizer": uid] as [String : Any]
+        let value = ["sport": typeOfSport.text!, "date": date.text!, "price": cost.text!,  "playersNeeded":playerNumber.text!, "organizer": uid] as [String : Any]
 
         ref.updateChildValues(value, withCompletionBlock: {
             (error, ref) in

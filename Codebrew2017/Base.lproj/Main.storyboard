@@ -114,7 +114,7 @@
                     <navigationItem key="navigationItem" title="Scheduled Matches" id="NOy-Dm-D4E" userLabel="Scheduled Matches"/>
                     <connections>
                         <outlet property="scheduledMatchesTableView" destination="zKs-lV-VVy" id="W3c-Nn-Zxg"/>
-                        <segue destination="4Ac-Hn-IN3" kind="show" identifier="ShowPlayers" id="5jE-pv-lmV"/>
+                        <segue destination="4Ac-Hn-IN3" kind="show" identifier="ShowPlayers" id="mDa-Xm-OsH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTC-PZ-OlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,9 +234,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Available Matches" id="hto-xC-SUG">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="u8G-eU-px0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="bux-rf-gso">
                             <connections>
-                                <action selector="logout:" destination="4UO-a5-xwI" id="aZV-83-jhz"/>
+                                <action selector="logout:" destination="4UO-a5-xwI" id="4BM-4O-vE3"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="location" id="oDo-Y7-N5Y">
@@ -293,11 +293,11 @@
             </objects>
             <point key="canvasLocation" x="-604" y="334"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Calendar-->
         <scene sceneID="l2t-cl-ZMs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pOg-31-7OE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="calendar" id="NdT-CP-O80"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" id="NdT-CP-O80"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T9H-js-p71">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -415,7 +415,7 @@
             </objects>
             <point key="canvasLocation" x="1764" y="-706.59670164917543"/>
         </scene>
-        <!--Match Details-->
+        <!--Players-->
         <scene sceneID="xus-Aw-KDc">
             <objects>
                 <viewController id="4Ac-Hn-IN3" customClass="Match_Detail_Layout" customModule="Codebrew2017" sceneMemberID="viewController">
@@ -524,7 +524,7 @@
                             <constraint firstItem="uY5-K2-8TK" firstAttribute="bottom" secondItem="Az9-Hf-k8x" secondAttribute="top" id="qNb-OU-4jy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Match Details" id="HIR-lT-TiQ"/>
+                    <navigationItem key="navigationItem" title="Players" id="HIR-lT-TiQ"/>
                     <connections>
                         <outlet property="tableView" destination="uY5-K2-8TK" id="TwX-fz-8aQ"/>
                         <segue destination="MgY-gb-j1R" kind="presentation" identifier="RatePlayer" modalTransitionStyle="crossDissolve" id="uoa-JS-Jl1"/>
@@ -608,7 +608,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DlB-bX-8g1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2742" y="36"/>
+            <point key="canvasLocation" x="2742" y="-63"/>
         </scene>
         <!--Rate Player View Controller-->
         <scene sceneID="CCK-HN-2JZ">
