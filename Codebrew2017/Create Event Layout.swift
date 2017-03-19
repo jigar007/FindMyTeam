@@ -74,16 +74,15 @@ class Create_Event_Layout: UIViewController {
     @IBAction func createNewEvent(_ sender: Any) {
         
         let ref = FIRDatabase.database().reference().child("game").childByAutoId()
-//        let dateFormatter = DateFormatter()
-//        let uid = FIRAuth.auth()?.currentUser?.uid
+        let dateFormatter = DateFormatter()
+        let uid = FIRAuth.auth()?.currentUser?.uid
         
         
 //        let date = Date()
 //        let formatter = DateFormatter()
 //        formatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
 //        let result = formatter.string(from: date)
-        let value = ["sport": typeOfSport.text!, "Date": date.text!, "prices": cost.text!,  "playersNeeded":playerNumber.text!] as [String : Any]
-        
+        let value = ["sport": typeOfSport.text!, "Date": date.text!, "prices": cost.text!,  "playersNeeded":playerNumber.text!, "organizer": uid] as [String : Any]
         ref.updateChildValues(value, withCompletionBlock: {
             (error, ref) in
             if error != nil {

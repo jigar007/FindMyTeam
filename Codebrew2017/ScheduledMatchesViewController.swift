@@ -18,7 +18,7 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
     var refreshControl: UIRefreshControl!
     var games = [Game]()
     var firebaseReference: FIRDatabaseReference!
-    let userID = FIRAuth.auth()?.currentUser?.uid
+    var userID = FIRAuth.auth()?.currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,11 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
         scheduledMatchesTableView.addSubview(self.refreshControl)
         
         //load data
+        refreshData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userID = FIRAuth.auth()?.currentUser?.uid
         refreshData()
     }
     
