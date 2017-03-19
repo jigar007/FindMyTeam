@@ -93,13 +93,9 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
                     }
                 }
                 
-                if (self.userID == newGame.organizerUid) {
-                    
-                    if (newGame.confirmedPlayers.contains(self.userID!)) {
+                if (self.userID == newGame.organizerUid || newGame.confirmedPlayers.contains(self.userID!)) {
                         
                         self.games.append(newGame)
-                    }
-                    
                 }
 //                let confirmedPlayer = dict.value(forKey: "confirmedPlayer") as? NSDictionary
 //                
@@ -112,7 +108,7 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
                 //if ((self.userID) != nil) {
                 //if (self.userID != newGame.organizerUid) {
                 // if !(newGame.confirmedPlayers?.contains(self.userID!))! {
-                self.games.append(newGame)
+                //self.games.append(newGame)
                 //}
                 //}
                 //}
