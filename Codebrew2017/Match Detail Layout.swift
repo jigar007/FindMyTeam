@@ -218,8 +218,8 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
         }
     }
     
-    @IBAction func unwindBackFromRating(segue: UIStoryboardSegue) {
-        self.performSegue(withIdentifier: "unwindBackFromRating", sender: self)
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {
+        //self.performSegue(withIdentifier: "unwindBackFromRating", sender: self)
     }
     
     
