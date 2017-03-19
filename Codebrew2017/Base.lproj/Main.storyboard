@@ -609,10 +609,10 @@
             </objects>
             <point key="canvasLocation" x="2742" y="36"/>
         </scene>
-        <!--View Controller-->
+        <!--Rate Player View Controller-->
         <scene sceneID="CCK-HN-2JZ">
             <objects>
-                <viewController id="MgY-gb-j1R" customClass="ViewController" customModule="Codebrew2017" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MgY-gb-j1R" customClass="RatePlayerViewController" customModule="Codebrew2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WVH-BE-zhE"/>
                         <viewControllerLayoutGuide type="bottom" id="nJ4-SA-y7T"/>
@@ -676,6 +676,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PLO-af-pCa"/>
+                    <connections>
+                        <outlet property="playerImage" destination="8GA-yy-rDn" id="lC2-t4-SMC"/>
+                        <outlet property="playerName" destination="uD4-3h-Imb" id="s4Y-sa-UW0"/>
+                        <outlet property="stackView" destination="J8g-jl-Wgd" id="7pq-75-jct"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7TF-NA-s8D" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="9jf-5j-h7a">
