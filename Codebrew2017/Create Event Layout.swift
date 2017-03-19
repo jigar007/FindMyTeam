@@ -121,13 +121,6 @@ class Create_Event_Layout: UIViewController {
         })
         
     }
-    func handleSend(){
-        if let uid = FIRAuth.auth()?.currentUser?.uid {
-            self.currentUid = uid
-            
 
-            
-        }
-    }
     
 }
