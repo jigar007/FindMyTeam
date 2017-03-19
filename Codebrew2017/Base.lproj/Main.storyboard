@@ -238,7 +238,7 @@
                                 <action selector="logout:" destination="4UO-a5-xwI" id="aZV-83-jhz"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="compass_icon" id="oDo-Y7-N5Y">
+                        <barButtonItem key="rightBarButtonItem" image="location" id="oDo-Y7-N5Y">
                             <connections>
                                 <action selector="showInMap:" destination="4UO-a5-xwI" id="geI-Qs-qxy"/>
                             </connections>
@@ -577,7 +577,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Games around you" id="jlo-Tm-hLU" userLabel="Games around you">
-                        <barButtonItem key="rightBarButtonItem" image="list_icon" id="f9h-Iz-2h8">
+                        <barButtonItem key="rightBarButtonItem" image="list" id="f9h-Iz-2h8">
                             <connections>
                                 <action selector="backToList:" destination="oGD-fQ-z8q" id="wdI-3S-J0i"/>
                             </connections>
@@ -721,9 +721,9 @@
     </scenes>
     <resources>
         <image name="calendar" width="32" height="32"/>
-        <image name="compass_icon" width="16" height="16"/>
         <image name="defaultPhoto" width="512" height="512"/>
-        <image name="list_icon" width="16" height="16"/>
+        <image name="list" width="16" height="16"/>
+        <image name="location" width="16" height="16"/>
         <image name="plus" width="32" height="32"/>
         <image name="search" width="32" height="32"/>
     </resources>
