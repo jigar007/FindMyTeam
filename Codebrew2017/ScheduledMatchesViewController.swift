@@ -23,7 +23,7 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
         firebaseReference = FIRDatabase.database().reference()
         
@@ -40,7 +40,13 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
     
     override func viewWillAppear(_ animated: Bool) {
         userID = FIRAuth.auth()?.currentUser?.uid
-        //refreshData()
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func refreshData() {
@@ -276,6 +282,11 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ShowPlayers") {
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
+            navigationItem.hidesBackButton = false
+            
             let destinationController = segue.destination as? Match_Detail_Layout
             let players = [Player]()
             print(games[selectedRow!])

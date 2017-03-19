@@ -234,9 +234,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Available Matches" id="hto-xC-SUG">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="u8G-eU-px0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="bux-rf-gso">
                             <connections>
-                                <action selector="logout:" destination="4UO-a5-xwI" id="aZV-83-jhz"/>
+                                <action selector="logout:" destination="4UO-a5-xwI" id="4BM-4O-vE3"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="location" id="oDo-Y7-N5Y">
@@ -415,7 +415,7 @@
             </objects>
             <point key="canvasLocation" x="1764" y="-706.59670164917543"/>
         </scene>
-        <!--Match Details-->
+        <!--Players-->
         <scene sceneID="xus-Aw-KDc">
             <objects>
                 <viewController id="4Ac-Hn-IN3" customClass="Match_Detail_Layout" customModule="Codebrew2017" sceneMemberID="viewController">
@@ -524,7 +524,7 @@
                             <constraint firstItem="uY5-K2-8TK" firstAttribute="bottom" secondItem="Az9-Hf-k8x" secondAttribute="top" id="qNb-OU-4jy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Match Details" id="HIR-lT-TiQ"/>
+                    <navigationItem key="navigationItem" title="Players" id="HIR-lT-TiQ"/>
                     <connections>
                         <outlet property="tableView" destination="uY5-K2-8TK" id="TwX-fz-8aQ"/>
                         <segue destination="MgY-gb-j1R" kind="presentation" identifier="RatePlayer" modalTransitionStyle="crossDissolve" id="uoa-JS-Jl1"/>
@@ -706,11 +706,15 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TMT-tS-sMj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2yf-GQ-oXs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2yf-GQ-oXs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xqX-Ir-r54">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="4Ac-Hn-IN3" kind="relationship" relationship="rootViewController" id="S8z-jM-RXN"/>
                     </connections>

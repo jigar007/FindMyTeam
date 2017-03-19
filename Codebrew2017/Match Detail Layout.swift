@@ -23,7 +23,6 @@ class Match_Detail_Layout: UIViewController, UITableViewDelegate,  UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
         firebaseReference = FIRDatabase.database().reference()
         
