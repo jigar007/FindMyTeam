@@ -58,8 +58,6 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
             let value = snapshot.value as? NSDictionary//[String:AnyObject]//NSDictionary
             
             for (key, val) in value! {
-                print (key)
-                print (val)
                 let newGame = Game()
                 newGame.uid = key as? String
                 
@@ -110,8 +108,7 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
                 //}
                 //}
                 
-                print("GAMES:")
-                print(self.games.count)
+            
                 //
                 //                for (key2,val2) in (val as? NSDictionary)! {
                 //
@@ -284,14 +281,12 @@ class ScheduledMatchesViewController: UIViewController, UITableViewDelegate,  UI
         if (segue.identifier == "ShowPlayers") {
             
             let destinationController = segue.destination as? Match_Detail_Layout
-            let players = [Player]()
-            print(games[selectedRow!])
+            let game = games[selectedRow!]
+            print("!!!!!!!!!!!!!!!!!!")
+            print(game.confirmedPlayers)
+            destinationController?.confirmedPlayers = game.confirmedPlayers
             
-                
-            destinationController?.players = players
             
-            
-
         }
      }
  
