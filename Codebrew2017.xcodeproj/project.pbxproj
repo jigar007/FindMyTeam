@@ -15,6 +15,7 @@
 		057999051E7CFB7000CEB0E9 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057999041E7CFB7000CEB0E9 /* MatchesViewController.swift */; };
 		057999071E7D1E2100CEB0E9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057999061E7D1E2100CEB0E9 /* Game.swift */; };
 		0583EBD31E7DF2AE00B5AA16 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583EBD21E7DF2AE00B5AA16 /* PlayerTableViewCell.swift */; };
+		0583EBD51E7E087600B5AA16 /* RatePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583EBD41E7E087600B5AA16 /* RatePlayerViewController.swift */; };
 		05EAA9111E7D910A00467C02 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAA9101E7D910A00467C02 /* RatingControl.swift */; };
 		0C0486B61E7CCE9500DA7123 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0486B51E7CCE9500DA7123 /* AppDelegate.swift */; };
 		0C0486B81E7CCE9500DA7123 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0486B71E7CCE9500DA7123 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		057999041E7CFB7000CEB0E9 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		057999061E7D1E2100CEB0E9 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		0583EBD21E7DF2AE00B5AA16 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
+		0583EBD41E7E087600B5AA16 /* RatePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatePlayerViewController.swift; sourceTree = "<group>"; };
 		05EAA9101E7D910A00467C02 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		0C0486B21E7CCE9500DA7123 /* Codebrew2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Codebrew2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C0486B51E7CCE9500DA7123 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				056203BE1E7D7B7B00B39471 /* ScheduledMatchesViewController.swift */,
 				057999021E7CFB2200CEB0E9 /* MatchTableViewCell.swift */,
 				0583EBD21E7DF2AE00B5AA16 /* PlayerTableViewCell.swift */,
+				0583EBD41E7E087600B5AA16 /* RatePlayerViewController.swift */,
 				056203C21E7D83C500B39471 /* MapViewController.swift */,
 				05EAA9101E7D910A00467C02 /* RatingControl.swift */,
 				0C0486B91E7CCE9500DA7123 /* Main.storyboard */,
@@ -285,6 +288,7 @@
 				056203C11E7D7D0C00B39471 /* ScheduledTableViewCell.swift in Sources */,
 				0583EBD31E7DF2AE00B5AA16 /* PlayerTableViewCell.swift in Sources */,
 				057999071E7D1E2100CEB0E9 /* Game.swift in Sources */,
+				0583EBD51E7E087600B5AA16 /* RatePlayerViewController.swift in Sources */,
 				0CDA3ADF1E7CE4E000B92F67 /* Player.swift in Sources */,
 				0C0486B61E7CCE9500DA7123 /* AppDelegate.swift in Sources */,
 				057999051E7CFB7000CEB0E9 /* MatchesViewController.swift in Sources */,

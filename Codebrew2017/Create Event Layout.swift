@@ -83,7 +83,7 @@ class Create_Event_Layout: UIViewController {
 //        formatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
 //        let result = formatter.string(from: date)
         let value = ["sport": typeOfSport.text!, "Date": date.text!, "prices": cost.text!,  "playersNeeded":playerNumber.text!, "organizer": uid] as [String : Any]
-        
+
         ref.updateChildValues(value, withCompletionBlock: {
             (error, ref) in
             if error != nil {
